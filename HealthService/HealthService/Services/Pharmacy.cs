@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace HealthService.Services
 {
-    class Pharmancy
+    class Pharmacy
     {
-        private static Pharmancy _instance;
+        private static Pharmacy _instance;
         private List<Medicine> _medicines = new List<Medicine>();
 
         // Lock synchronization object
@@ -18,7 +18,7 @@ namespace HealthService.Services
 
         // Constructor (protected)
 
-        protected Pharmancy()
+        protected Pharmacy()
         {
             Medicine Mask = new Medicine();
             Medicine AlcoGel = new Medicine();
@@ -32,7 +32,7 @@ namespace HealthService.Services
             
         }
 
-        public static Pharmancy GetPharmancy()
+        public static Pharmacy GetPharmancy()
         {
             // Support multithreaded applications through
 
@@ -48,7 +48,7 @@ namespace HealthService.Services
                 {
                     if (_instance == null)
                     {
-                        _instance = new Pharmancy();
+                        _instance = new Pharmacy();
                     }
                 }
             }

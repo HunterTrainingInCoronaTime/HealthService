@@ -12,7 +12,7 @@ namespace HealthService.Controllers
     {
         private Calendar _calender;
         private ResourcesDepartment _resourcesDepartment;
-        private Pharmancy _pharmancy;
+        private Pharmacy _pharmancy;
 
         private List<IObserver<Appointment>> _observers;
 

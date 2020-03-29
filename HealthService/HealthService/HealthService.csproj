@@ -50,7 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Calendar.cs" />
     <Compile Include="Services\ClientsDepartment.cs" />
-    <Compile Include="Services\Pharmancy.cs" />
+    <Compile Include="Services\Pharmacy.cs" />
     <Compile Include="Services\ResourcesDepartment.cs" />
   </ItemGroup>
   <ItemGroup>
