@@ -63,7 +63,7 @@ namespace HealthService.Services
 
         public bool AddMedicine(string name)
         {
-            Medicine newMedicine = new Medicine();
+            Medicine newMedicine = new Medicine(name);
             _medicines.Add(newMedicine);
 
                 return true;
@@ -71,7 +71,7 @@ namespace HealthService.Services
         }
         public bool DeleteMedicine(Guid id)
         {
-            _medicines.Where(m => m.id.equals(id)).remove();
+            _medicines.RemoveAll(m => m.GetId().Equals(id));
             return true;
         }
 

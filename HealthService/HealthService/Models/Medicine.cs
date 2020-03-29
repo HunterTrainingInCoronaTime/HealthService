@@ -8,16 +8,21 @@ namespace HealthService.Models
 {
     class Medicine : IObserver<Appointment>
     {
-        private Guid _id;
+        private  Guid _id;
         private string _name;
         private List<Appointment> _appointments;
 
 
-        public Medicine()
+        public Medicine(string name)
         {
-
+            _id = Guid.NewGuid();
+            _name = name;
+            _appointments = new List<Appointment>();
         }
-
+        public Guid GetId()
+        {
+            return _id;
+        }
 
         public void OnCompleted()
         {

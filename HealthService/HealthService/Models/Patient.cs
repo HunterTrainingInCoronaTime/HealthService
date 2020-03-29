@@ -12,10 +12,17 @@ namespace HealthService.Models
         private string _name;
         private List<Appointment> _appointments;
 
-        public Patient()
+        public Patient(string name)
         {
-
+            _id = Guid.NewGuid();
+            _name = name;
+            _appointments = new List<Appointment>();
         }
+        public void UpdateDetails(string newName)
+        {
+            _name = newName;
+        }
+
 
         public void OnCompleted()
         {
