@@ -23,10 +23,25 @@ namespace HealthService.Services
         {
             return true;
         }
-        public bool DeleteAppointment(Guid patientID = null, Guid doctorId = null, Guid AppointmentId = null)
+        public bool DeleteAppointment(Guid appointmentId)
         {
+            _appointments.RemoveAll(appointment => appointment.GetId().Equals(appointmentId));
             return true;
         }
+
+        public bool DeletAllDoctorsAppointment(Guid doctorId)
+        {
+            _appointments.RemoveAll(appointment => appointment.GetDoctorId().Equals(doctorId));
+            return true;
+        }
+        public bool DeleteAllPatientAppointment(Guid patientId)
+        {
+            _appointments.RemoveAll(appointment => appointment.GetPatientId().Equals(patientId));
+
+            return true;
+        }
+        
+
         public bool EditAppointment(Guid appointmentId, Guid doctorId, Guid newDoctorId)
         {
             return true;

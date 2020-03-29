@@ -27,5 +27,17 @@ namespace HealthService.Models
             _status = "Ended";
             return true;
         }
+        public Guid GetPatientId()
+        {
+            return _patientId;
+        }
+        public Guid GetDoctorId()
+        {
+            return _doctorId;
+        }
+        public Guid GetId()
+        {
+            return _id;
+        }
     }
 }
