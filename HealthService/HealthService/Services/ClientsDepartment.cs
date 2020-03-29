@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthService.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,12 @@ namespace HealthService.Services
 {
     class ClientsDepartment
     {
+        private List <Patient> _clients;
+
+
+        public ClientsDepartment()
+        {
+
+        }
     }
 }

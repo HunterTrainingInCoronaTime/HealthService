@@ -8,5 +8,14 @@ namespace HealthService.Models
 {
     class Appointment
     {
+        private Guid _id;
+        private Guid _doctorId;
+        private Guid _patientId;
+        private List<Guid> _medicineGivven;
+
+        public Appointment()
+        {
+
+        }
     }
 }
