@@ -13,7 +13,25 @@ namespace HealthService.Services
 
         public Calendar()
         {
-
+            _appointments = new List<Appointment>();
         }
+        public List<Appointment> GetAppointments()
+        {
+            return _appointments;
+        }
+        public bool AddAppointment(Guid patientID, Guid doctorId)
+        {
+            return true;
+        }
+        public bool DeleteAppointment(Guid patientID = null, Guid doctorId = null, Guid AppointmentId = null)
+        {
+            return true;
+        }
+        public bool EditAppointment(Guid appointmentId, Guid doctorId, Guid newDoctorId)
+        {
+            return true;
+        }
+
+
     }
 }

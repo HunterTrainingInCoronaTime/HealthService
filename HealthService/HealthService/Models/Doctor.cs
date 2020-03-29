@@ -36,7 +36,10 @@ namespace HealthService.Models
             return medicineGiven;
         }
 
-
+        public Guid GetId()
+        {
+            return _id;
+        }
 
 
 

@@ -23,7 +23,10 @@ namespace HealthService.Models
             _name = newName;
         }
 
-
+        public Guid GetId()
+        {
+            return _id;
+        }
         public void OnCompleted()
         {
             throw new NotImplementedException();

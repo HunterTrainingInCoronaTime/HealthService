@@ -16,5 +16,27 @@ namespace HealthService.Services
         {
 
         }
+        public List<Patient> GetPatients()
+        {
+            return _clients;
+        }
+        public bool AddPatient(string name)
+        {
+            Patient newPatient = new Patient(name);
+            return true;
+        }
+
+        public bool DeletePatient(Guid id)
+        {
+            _clients.RemoveAll(client => client.GetId().Equals(id));
+            return true;
+        }
+        public bool EditPatientDetails(Guid patientId, string newName)
+        {
+            _clients.Find(patient => patient.GetId().Equals(patientId)).UpdateDetails(newName);
+            return true;
+        }
+
+
     }
 }
