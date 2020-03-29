@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HealthService.Controllers
 {
-    class Appointment : IObservable<Appointment>
+    class Clinic : IObservable<Appointment>
     {
         private Calendar _calender;
         private ResourcesDepartment _resourcesDepartment;
@@ -16,7 +16,7 @@ namespace HealthService.Controllers
 
         private List<IObserver<Appointment>> _observers;
 
-        public Appointment()
+        public Clinic()
         {
 
         }

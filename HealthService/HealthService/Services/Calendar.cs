@@ -1,4 +1,4 @@
-﻿using HealthService.Controllers;
+﻿using HealthService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

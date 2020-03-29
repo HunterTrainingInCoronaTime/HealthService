@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HealthService.Models
 {
-    class Appointment
+    public class Appointment
     {
         private Guid _id;
         private Guid _doctorId;
