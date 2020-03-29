@@ -9,11 +9,71 @@ namespace HealthService.Services
 {
     class Pharmancy
     {
-        private List<Medicine> _medicines;
+        private static Pharmancy _instance;
+        private List<Medicine> _medicines = new List<Medicine>();
 
-        public Pharmancy()
+        // Lock synchronization object
+
+        private static object syncLock = new object();
+
+        // Constructor (protected)
+
+        protected Pharmancy()
         {
-
+            Medicine Mask = new Medicine();
+            Medicine AlcoGel = new Medicine();
+            Medicine Akamol = new Medicine();
+            Medicine Nurophen = new Medicine();
+            // List of available Medicines
+            _medicines.Add(Mask);
+            _medicines.Add(AlcoGel);
+            _medicines.Add(Akamol);
+            _medicines.Add(Nurophen);
+            
         }
+
+        public static Pharmancy GetPharmancy()
+        {
+            // Support multithreaded applications through
+
+            // 'Double checked locking' pattern which (once
+
+            // the instance exists) avoids locking each
+
+            // time the method is invoked
+
+            if (_instance == null)
+            {
+                lock (syncLock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new Pharmancy();
+                    }
+                }
+            }
+
+            return _instance;
+        }
+
+        public List <Medicine> GetMedicines()
+        {
+            return _medicines;
+        }
+
+        public bool AddMedicine(string name)
+        {
+            Medicine newMedicine = new Medicine();
+            _medicines.Add(newMedicine);
+
+                return true;
+            
+        }
+        public bool DeleteMedicine(Guid id)
+        {
+            _medicines.Where(m => m.id.equals(id)).remove();
+            return true;
+        }
+
     }
 }
