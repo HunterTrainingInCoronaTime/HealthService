@@ -20,10 +20,10 @@ namespace HealthService.Services
 
         protected Pharmacy()
         {
-            Medicine Mask = new Medicine();
-            Medicine AlcoGel = new Medicine();
-            Medicine Akamol = new Medicine();
-            Medicine Nurophen = new Medicine();
+            Medicine Mask = new Medicine("Mask");
+            Medicine AlcoGel = new Medicine("AlcoGel");
+            Medicine Akamol = new Medicine("Akamol");
+            Medicine Nurophen = new Medicine("Nurophen");
             // List of available Medicines
             _medicines.Add(Mask);
             _medicines.Add(AlcoGel);
