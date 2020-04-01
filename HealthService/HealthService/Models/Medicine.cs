@@ -36,6 +36,11 @@ namespace HealthService.Models
 
         public void OnNext(Appointment value)
         {
+            if (_appointments.Any(appointment => appointment.GetId().Equals(value.GetId())))
+            {
+                _appointments.RemoveAll(appointment => appointment.GetId().Equals(value.GetId()));
+                _appointments.Add(value);
+            }
             throw new NotImplementedException();
         }
     }
