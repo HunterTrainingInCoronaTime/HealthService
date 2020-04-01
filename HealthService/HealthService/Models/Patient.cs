@@ -29,22 +29,21 @@ namespace HealthService.Models
         }
         public void OnCompleted()
         {
-            throw new NotImplementedException();
+            //No opperation needed
         }
 
         public void OnError(Exception error)
         {
-            throw new NotImplementedException();
+            //No opperation needed
         }
 
-        public void OnNext(Appointment value)
+            public void OnNext(Appointment value)
         {
             if (_appointments.Any(appointment => appointment.GetId().Equals(value.GetId())))
             {
                 _appointments.RemoveAll(appointment => appointment.GetId().Equals(value.GetId()));
                 _appointments.Add(value);
             }
-            throw new NotImplementedException();
         }
     }
 }
