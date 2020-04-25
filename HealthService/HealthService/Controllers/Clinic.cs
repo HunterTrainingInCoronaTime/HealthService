@@ -24,7 +24,26 @@ namespace HealthService.Controllers
 
         public IDisposable Subscribe(IObserver<Appointment> observer)
         {
-            throw new NotImplementedException();
+            // Check whether observer is already registered. If not, add it
+            if (!_observers.Contains(observer))
+            {
+                List <Appointment> appointments = _calender.GetAppointments();
+                _observers.Add(observer);
+                // Provide observer with existing data.
+                foreach (var item in appointments)
+                {
+                    observer.OnNext(item);
+                }
+            }
+
+            return new Unsubscriber<Appointment>(_observers, observer);
+
+            /*
+            foreach ( _observer in _observers)
+            {
+                _observer.OnNext(_calender.GetAppointments());
+            }
+            throw new NotImplementedException();*/
         }
     }
 }
