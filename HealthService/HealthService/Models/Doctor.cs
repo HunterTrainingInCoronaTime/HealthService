@@ -50,5 +50,9 @@ namespace HealthService.Models
             }
            
         }
+        public int GetAppointmentsCount()
+        {
+            return _appointments.FindAll(appointment => appointment.GetStatus().Equals("Open")).Count();
+        }
     }
 }

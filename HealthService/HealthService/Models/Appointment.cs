@@ -43,5 +43,9 @@ namespace HealthService.Models
         {
             _doctorId = newDoctorId;
         }
+        public string GetStatus()
+        {
+            return _status;
+        }
     }
 }

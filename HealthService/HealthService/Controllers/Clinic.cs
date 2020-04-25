@@ -46,5 +46,11 @@ namespace HealthService.Controllers
             Medicine newMedicine = _pharmancy.AddMedicine(medicineName);
             ListenToAppointmentChanges(newMedicine.ChangeAppointments);
         }
+
+        public void NewAppointment(Guid patientId)
+        {
+            Doctor appointmentsDoctor = _resourcesDepartment.ChooseDoctorForAppointment();
+            _calender.AddAppointment(patientId,appointmentsDoctor.GetId());
+        }
     }
 }

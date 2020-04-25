@@ -35,7 +35,25 @@ namespace HealthService.Services
             _doctors.Find(doctor => doctor.GetId().Equals(doctorId)).UpdateDetails(newName);
             return true;
         }
-
+        public Doctor ChooseDoctorForAppointment()
+        {
+            Doctor mostAvailableDoctor=null;
+            if (_doctors.Any(doctor => doctor.GetAppointmentsCount() == 0))
+            { 
+            return _doctors.First(doctor => doctor.GetAppointmentsCount() == 0); }
+            foreach (var doctor in _doctors)
+            {
+                if (mostAvailableDoctor==null)
+                {
+                    mostAvailableDoctor = doctor;
+                }
+                if (mostAvailableDoctor.GetAppointmentsCount() > doctor.GetAppointmentsCount())
+                {
+                    mostAvailableDoctor = doctor;
+                }
+            }
+            return mostAvailableDoctor;
+        }
 
     }
 }
