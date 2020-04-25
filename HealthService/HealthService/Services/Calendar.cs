@@ -32,15 +32,15 @@ namespace HealthService.Services
             return appointmentDeleted;
         }
 
-        public Appointment DeletAllDoctorsAppointment(Guid doctorId)
+        public List<Appointment> DeletAllDoctorsAppointment(Guid doctorId)
         {
-            Appointment appointmentDeleted = _appointments.Find(appointment => appointment.GetDoctorId().Equals(doctorId));
+            List<Appointment> appointmentDeleted = _appointments.FindAll(appointment => appointment.GetDoctorId().Equals(doctorId));
             _appointments.RemoveAll(appointment => appointment.GetDoctorId().Equals(doctorId));
             return appointmentDeleted;
         }
-        public Appointment DeleteAllPatientAppointment(Guid patientId)
+        public List<Appointment> DeleteAllPatientAppointment(Guid patientId)
         {
-            Appointment appointmentDeleted = _appointments.Find(appointment => appointment.GetPatientId().Equals(patientId));
+            List<Appointment> appointmentDeleted = _appointments.FindAll(appointment => appointment.GetPatientId().Equals(patientId));
             _appointments.RemoveAll(appointment => appointment.GetPatientId().Equals(patientId));
 
             return appointmentDeleted;

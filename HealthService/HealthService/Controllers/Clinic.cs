@@ -16,6 +16,7 @@ namespace HealthService.Controllers
         private Pharmacy _pharmancy;
 
         private Action<Appointment> _onAppointmentsCange;
+        private Action<Appointment> _onAppointmentDelete;
 
         public Clinic()
         {
@@ -29,6 +30,10 @@ namespace HealthService.Controllers
         public void ListenToAppointmentChanges(Action<Appointment> newListener)
         {
             _onAppointmentsCange += newListener;
+        }
+        public void ListenToAppointmentDelete (Action<Appointment> newListener)
+        {
+            _onAppointmentDelete += newListener;
         }
 
 
@@ -86,5 +91,28 @@ namespace HealthService.Controllers
             Appointment appointmentAfterEdit= _calender.EditAppointment(appointmentId, doctorId, newDoctorId);
             _onAppointmentsCange.Invoke(appointmentAfterEdit);
         }
+
+
+        public void DeletePatient(Guid patientId)
+        {
+            _clientsDepartment.DeletePatient(patientId);
+            List<Appointment> appointmentsToDelete= _calender.DeleteAllPatientAppointment(patientId);
+            foreach (var appointment in appointmentsToDelete)
+            {
+                if (appointment.GetStatus().Equals("open"))
+                {
+                    _onAppointmentDelete.Invoke(appointment);
+                }
+            }
+        }
+        public void DeleteMedicine(Guid medicineId)
+        {
+            _pharmancy.DeleteMedicine(medicineId);
+        }
+        public void DelteAppointment(Guid appointmentId)
+        {
+
+        }
+        
     }
 }
