@@ -26,7 +26,6 @@ namespace HealthService.Controllers
         public void Listen(Action<Appointment> newListener)
         {
             _onAppointmentsCange += newListener;
-        
         }
     }
 }

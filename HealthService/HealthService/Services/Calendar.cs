@@ -49,10 +49,8 @@ namespace HealthService.Services
 
         public Appointment EditAppointment(Guid appointmentId, Guid doctorId, Guid newDoctorId)
         {
+            _appointments.Find(appointment => appointment.GetId().Equals(appointmentId)).CangeDoctor(newDoctorId);
             Appointment appointmentAfterEdit = _appointments.Find(appointment => appointment.GetId().Equals(appointmentId));
-            _appointments.RemoveAll(appointment => appointment.GetId().Equals(appointmentId));
-            appointmentAfterEdit.CangeDoctor(newDoctorId);
-            _appointments.Add(appointmentAfterEdit);
             return appointmentAfterEdit;
         }
 
