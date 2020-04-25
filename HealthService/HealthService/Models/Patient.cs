@@ -17,7 +17,6 @@ namespace HealthService.Models
             _id = Guid.NewGuid();
             _name = name;
             _appointments = new List<Appointment>();
-
         }
         public void UpdateDetails(string newName)
         {

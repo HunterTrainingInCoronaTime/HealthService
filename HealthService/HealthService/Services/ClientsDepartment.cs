@@ -20,10 +20,10 @@ namespace HealthService.Services
         {
             return _clients;
         }
-        public bool AddPatient(string name)
+        public Patient AddPatient(string name)
         {
             Patient newPatient = new Patient(name);
-            return true;
+            return newPatient;
         }
 
         public bool DeletePatient(Guid id)

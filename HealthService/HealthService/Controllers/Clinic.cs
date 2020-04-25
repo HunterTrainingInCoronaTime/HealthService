@@ -15,17 +15,26 @@ namespace HealthService.Controllers
         private ClientsDepartment _clientsDepartment;
         private Pharmacy _pharmancy;
 
-        private Action<Appointment> _onAppointmentsCange { set; get; }
+        private Action<Appointment> _onAppointmentsCange;
 
         public Clinic()
         {
-
+            _calender = new Calendar();
+            _resourcesDepartment = new ResourcesDepartment();
+            _clientsDepartment = new ClientsDepartment();
+            _pharmancy = Pharmacy.GetPharmancy();
+            
         }
 
-
-        public void Listen(Action<Appointment> newListener)
+        public void ListenToAppointmentChanges(Action<Appointment> newListener)
         {
             _onAppointmentsCange += newListener;
+        }
+
+        public void NewPatient(string patientName)
+        {
+            Patient newPatient = _clientsDepartment.AddPatient(patientName);
+            ListenToAppointmentChanges(newPatient.ChangeAppointments); 
         }
     }
 }
