@@ -106,6 +106,26 @@ namespace HealthService.Controllers
                     _onAppointmentDelete.Invoke(appointment);
                 }
             }
+        public void DeleteDoctor(Guid doctorId)
+        {
+            // Maybe somday improve the logic by changing all the doctors in those appointments - then the patients will get the change appointment 
+            _resourcesDepartment.DeleteDoctor(doctorId);
+            List<Appointment> appointmentsToDelete=_calender.DeletAllDoctorsAppointment(doctorId);
+            foreach (var appointment in appointmentsToDelete)
+            {
+                _onAppointmentDelete.Invoke(appointment);
+            }
+        }
+        }
+        public void DeleteDoctor(Guid doctorId)
+        {
+            // Maybe somday improve the logic by changing all the doctors in those appointments - then the patients will get the change appointment 
+            _resourcesDepartment.DeleteDoctor(doctorId);
+            List<Appointment> appointmentsToDelete = _calender.DeletAllDoctorsAppointment(doctorId);
+            foreach (var appointment in appointmentsToDelete)
+            {
+                _onAppointmentDelete.Invoke(appointment);
+            }
         }
         public void DeleteMedicine(Guid medicineId)
         {
@@ -116,6 +136,7 @@ namespace HealthService.Controllers
             Appointment deletedAppointment =_calender.DeleteAppointment(appointmentId);
             _onAppointmentDelete.Invoke(deletedAppointment);
         }
+
         
     }
 }
