@@ -88,6 +88,10 @@ namespace HealthService.Controllers
         {
             _resourcesDepartment.EditDoctorDetails(doctorId, newDoctorName);
         }
+        public void ChangeMedicineName(Guid medicineId, string newName)
+        {
+            _pharmancy.ChangeMedicineName(medicineId, newName);
+        }
         public void ChangeAppointment (Guid appointmentId,Guid doctorId, Guid newDoctorId)
         {
             Appointment appointmentAfterEdit= _calender.EditAppointment(appointmentId, doctorId, newDoctorId);

@@ -74,6 +74,12 @@ namespace HealthService.Services
             _medicines.RemoveAll(m => m.GetId().Equals(id));
             return true;
         }
+        public Medicine ChangeMedicineName(Guid id, string newName)
+        {
+            Medicine ChangedMedicine = _medicines.Find(medicine => medicine.GetId().Equals(id));
+            ChangedMedicine.ChangeName(newName);
+            return ChangedMedicine;
+        }
 
     }
 }

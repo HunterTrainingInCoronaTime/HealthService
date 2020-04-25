@@ -24,7 +24,11 @@ namespace HealthService.Models
             return _id;
         }
 
-       
+       public void ChangeName(string newName)
+        {
+            _name = newName;
+        }
+
         public void ChangeAppointments(Appointment value)
         {
             if (_appointments.Any(appointment => appointment.GetId().Equals(value.GetId())))
