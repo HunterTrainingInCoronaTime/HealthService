@@ -12,6 +12,7 @@ namespace HealthService.Controllers
     {
         private Calendar _calender;
         private ResourcesDepartment _resourcesDepartment;
+        private ClientsDepartment _clientsDepartment;
         private Pharmacy _pharmancy;
 
         private Action<Appointment> _onAppointmentsCange { set; get; }
