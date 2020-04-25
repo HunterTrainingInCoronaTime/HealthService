@@ -14,7 +14,7 @@ namespace HealthService.Services
 
         public ClientsDepartment()
         {
-
+            _clients = new List<Patient>();
         }
         public List<Patient> GetPatients()
         {

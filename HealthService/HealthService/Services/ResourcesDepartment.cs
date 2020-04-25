@@ -13,7 +13,7 @@ namespace HealthService.Services
 
         public ResourcesDepartment()
         {
-
+            _doctors = new List<Doctor>();
         }
         public List<Doctor> GetDoctors()
         {

@@ -36,5 +36,6 @@ namespace HealthService.Controllers
             Patient newPatient = _clientsDepartment.AddPatient(patientName);
             ListenToAppointmentChanges(newPatient.ChangeAppointments); 
         }
+
     }
 }
