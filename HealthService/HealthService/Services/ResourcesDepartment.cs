@@ -19,11 +19,11 @@ namespace HealthService.Services
         {
             return _doctors;            
         }
-        public bool AddDoctor(string name)
+        public Doctor AddDoctor(string name)
         {
             Doctor newDoctor = new Doctor(name);
             _doctors.Add(newDoctor);
-            return true;
+            return newDoctor;
         }
         public bool DeleteDoctor(Guid id)
         {
