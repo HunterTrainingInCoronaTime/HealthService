@@ -41,18 +41,29 @@ namespace HealthService.Models
             return _id;
         }
 
-        public void ChangeAppointments(Appointment value)
-        {
-            if (_appointments.Any(appointment => appointment.GetId().Equals(value.GetId())))
-            {
-                _appointments.RemoveAll(appointment => appointment.GetId().Equals(value.GetId()));
-                _appointments.Add(value);
-            }
-           
-        }
         public int GetAppointmentsCount()
         {
             return _appointments.FindAll(appointment => appointment.GetStatus().Equals("Open")).Count();
         }
+
+        public void ChangeAppointments(Appointment appointmentToChange)
+        {
+            if (_appointments.Any(appointment => appointment.GetId().Equals(appointmentToChange.GetId())))
+            {
+                _appointments.RemoveAll(appointment => appointment.GetId().Equals(appointmentToChange.GetId()));
+                _appointments.Add(appointmentToChange);
+            }
+           
+        }
+
+        public void DeleteAppointments(Appointment appointmentToDelete)
+        {
+            if (_appointments.Any(appointment => appointment.GetId().Equals(appointmentToDelete.GetId())))
+            {
+                _appointments.RemoveAll(appointment => appointment.GetId().Equals(appointmentToDelete.GetId()));
+            }
+        }
+
+       
     }
 }
