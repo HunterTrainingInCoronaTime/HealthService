@@ -68,8 +68,8 @@ namespace HealthService.Controllers
         public void NewAppointment(Guid patientId)
         {
             Doctor appointmentsDoctor = _resourcesDepartment.ChooseDoctorForAppointment();
-            _calender.AddAppointment(patientId,appointmentsDoctor.GetId());
-
+            Appointment newAppointment=_calender.AddAppointment(patientId,appointmentsDoctor.GetId());
+            _onAppointmentsCange.Invoke(newAppointment);
         }
 
 
@@ -83,8 +83,8 @@ namespace HealthService.Controllers
         }
         public void ChangeAppointment (Guid appointmentId,Guid doctorId, Guid newDoctorId)
         {
-            _calender.EditAppointment(appointmentId, doctorId, newDoctorId);
-            _onAppointmentsCange.BeginInvoke();
+            Appointment appointmentAfterEdit= _calender.EditAppointment(appointmentId, doctorId, newDoctorId);
+            _onAppointmentsCange.Invoke(appointmentAfterEdit);
         }
     }
 }
