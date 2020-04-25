@@ -61,12 +61,12 @@ namespace HealthService.Services
             return _medicines;
         }
 
-        public bool AddMedicine(string name)
+        public Medicine AddMedicine(string name)
         {
             Medicine newMedicine = new Medicine(name);
             _medicines.Add(newMedicine);
 
-                return true;
+                return newMedicine;
             
         }
         public bool DeleteMedicine(Guid id)
