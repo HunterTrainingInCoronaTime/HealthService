@@ -64,6 +64,7 @@ namespace HealthService.Controllers
         {
             Doctor newDoctor = _resourcesDepartment.AddDoctor(doctorName);
             ListenToAppointmentChanges(newDoctor.ChangeAppointments);
+            ListenToAppointmentDelete(newDoctor.DeleteAppointments);
         }
          public void NewMedicine(string medicineName)
         {
