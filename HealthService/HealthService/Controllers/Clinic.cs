@@ -31,6 +31,7 @@ namespace HealthService.Controllers
             _onAppointmentsCange += newListener;
         }
 
+
         public List<Patient> GetPatientsFromClientDepartment()
         {
             return _clientsDepartment.GetPatients();
@@ -48,7 +49,6 @@ namespace HealthService.Controllers
             return _calender.GetAppointments();
         }
         
-
 
         public void NewPatient(string patientName)
         {
@@ -69,7 +69,22 @@ namespace HealthService.Controllers
         {
             Doctor appointmentsDoctor = _resourcesDepartment.ChooseDoctorForAppointment();
             _calender.AddAppointment(patientId,appointmentsDoctor.GetId());
+
         }
 
+
+        public void ChangePatientName(Guid patientId,string newPatientName)
+        {
+            _clientsDepartment.EditPatientDetails(patientId, newPatientName);
+        }
+        public void ChangeDoctorName(Guid doctorId, string newDoctorName)
+        {
+            _resourcesDepartment.EditDoctorDetails(doctorId, newDoctorName);
+        }
+        public void ChangeAppointment (Guid appointmentId,Guid doctorId, Guid newDoctorId)
+        {
+            _calender.EditAppointment(appointmentId, doctorId, newDoctorId);
+            _onAppointmentsCange.BeginInvoke();
+        }
     }
 }
