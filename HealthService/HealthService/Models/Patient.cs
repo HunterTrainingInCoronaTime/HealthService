@@ -27,13 +27,20 @@ namespace HealthService.Models
         {
             return _id;
         }
-       
-            public void ChangeAppointments(Appointment value)
+
+        public void ChangeAppointments(Appointment changedAppointment)
         {
-            if (_appointments.Any(appointment => appointment.GetId().Equals(value.GetId())))
+            if (_appointments.Any(appointment => appointment.GetId().Equals(changedAppointment.GetId())))
             {
-                _appointments.RemoveAll(appointment => appointment.GetId().Equals(value.GetId()));
-                _appointments.Add(value);
+                _appointments.RemoveAll(appointment => appointment.GetId().Equals(changedAppointment.GetId()));
+                _appointments.Add(changedAppointment);
+            }
+        }
+        public void DeleteAppointment(Appointment appointmentToDelete)
+        {
+            if (_appointments.Any(appointment => appointment.GetId().Equals(appointmentToDelete.GetId())))
+            {
+                _appointments.RemoveAll(appointment => appointment.GetId().Equals(appointmentToDelete.GetId()));
             }
         }
     }

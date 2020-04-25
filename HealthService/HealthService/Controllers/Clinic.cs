@@ -58,7 +58,8 @@ namespace HealthService.Controllers
         public void NewPatient(string patientName)
         {
             Patient newPatient = _clientsDepartment.AddPatient(patientName);
-            ListenToAppointmentChanges(newPatient.ChangeAppointments); 
+            ListenToAppointmentChanges(newPatient.ChangeAppointments);
+            ListenToAppointmentDelete(newPatient.DeleteAppointment);
         }
         public void NewDoctor(string doctorName)
         {
@@ -112,7 +113,8 @@ namespace HealthService.Controllers
         }
         public void DelteAppointment(Guid appointmentId)
         {
-
+            Appointment deletedAppointment =_calender.DeleteAppointment(appointmentId);
+            _onAppointmentDelete.Invoke(deletedAppointment);
         }
         
     }
