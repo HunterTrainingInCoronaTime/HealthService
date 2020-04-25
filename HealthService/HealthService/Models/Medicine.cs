@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HealthService.Models
 {
-    class Medicine : IObserver<Appointment>
+    class Medicine 
     {
         private  Guid _id;
         private string _name;
@@ -24,17 +24,8 @@ namespace HealthService.Models
             return _id;
         }
 
-        public void OnCompleted()
-        {
-            //No opperation needed
-        }
-
-        public void OnError(Exception error)
-        {
-            //No opperation needed
-        }
-
-        public void OnNext(Appointment value)
+       
+        public void ChangeAppointments(Appointment value)
         {
             if (_appointments.Any(appointment => appointment.GetId().Equals(value.GetId())))
             {

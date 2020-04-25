@@ -19,32 +19,41 @@ namespace HealthService.Services
         {
             return _appointments;
         }
-        public bool AddAppointment(Guid patientID, Guid doctorId)
+        public Appointment AddAppointment(Guid patientID, Guid doctorId)
         {
-            return true;
+            Appointment newAppointment = new Appointment(doctorId, patientID);
+            _appointments.Add(newAppointment);
+            return newAppointment;
         }
-        public bool DeleteAppointment(Guid appointmentId)
+        public Appointment DeleteAppointment(Guid appointmentId)
         {
+            Appointment appointmentDeleted= _appointments.Find(appointment => appointment.GetId().Equals(appointmentId));
             _appointments.RemoveAll(appointment => appointment.GetId().Equals(appointmentId));
-            return true;
+            return appointmentDeleted;
         }
 
-        public bool DeletAllDoctorsAppointment(Guid doctorId)
+        public Appointment DeletAllDoctorsAppointment(Guid doctorId)
         {
+            Appointment appointmentDeleted = _appointments.Find(appointment => appointment.GetDoctorId().Equals(doctorId));
             _appointments.RemoveAll(appointment => appointment.GetDoctorId().Equals(doctorId));
-            return true;
+            return appointmentDeleted;
         }
-        public bool DeleteAllPatientAppointment(Guid patientId)
+        public Appointment DeleteAllPatientAppointment(Guid patientId)
         {
+            Appointment appointmentDeleted = _appointments.Find(appointment => appointment.GetPatientId().Equals(patientId));
             _appointments.RemoveAll(appointment => appointment.GetPatientId().Equals(patientId));
 
-            return true;
+            return appointmentDeleted;
         }
         
 
-        public bool EditAppointment(Guid appointmentId, Guid doctorId, Guid newDoctorId)
+        public Appointment EditAppointment(Guid appointmentId, Guid doctorId, Guid newDoctorId)
         {
-            return true;
+            Appointment appointmentAfterEdit = _appointments.Find(appointment => appointment.GetId().Equals(appointmentId));
+            _appointments.RemoveAll(appointment => appointment.GetId().Equals(appointmentId));
+            appointmentAfterEdit.CangeDoctor(newDoctorId);
+            _appointments.Add(appointmentAfterEdit);
+            return appointmentAfterEdit;
         }
 
 

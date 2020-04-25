@@ -39,5 +39,9 @@ namespace HealthService.Models
         {
             return _id;
         }
+        public void CangeDoctor(Guid newDoctorId)
+        {
+            _doctorId = newDoctorId;
+        }
     }
 }

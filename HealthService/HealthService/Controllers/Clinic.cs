@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace HealthService.Controllers
 {
-    class Clinic : IObservable<Appointment>
+    class Clinic 
     {
         private Calendar _calender;
         private ResourcesDepartment _resourcesDepartment;
         private Pharmacy _pharmancy;
 
-        private List<IObserver<Appointment>> _observers;
+        private Action<Appointment> _onAppointmentsCange { set; get; }
 
         public Clinic()
         {
@@ -22,28 +22,10 @@ namespace HealthService.Controllers
         }
 
 
-        public IDisposable Subscribe(IObserver<Appointment> observer)
+        public void Listen(Action<Appointment> newListener)
         {
-            // Check whether observer is already registered. If not, add it
-            if (!_observers.Contains(observer))
-            {
-                List <Appointment> appointments = _calender.GetAppointments();
-                _observers.Add(observer);
-                // Provide observer with existing data.
-                foreach (var item in appointments)
-                {
-                    observer.OnNext(item);
-                }
-            }
-
-            return new Unsubscriber<Appointment>(_observers, observer);
-
-            /*
-            foreach ( _observer in _observers)
-            {
-                _observer.OnNext(_calender.GetAppointments());
-            }
-            throw new NotImplementedException();*/
+            _onAppointmentsCange += newListener;
+        
         }
     }
 }
